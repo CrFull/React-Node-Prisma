@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-*{
+/* Universal reset to prevent unexpected behavior */
+* {
     min-width: 0;
 }
+
+/* Dark mode for inputs */
+input {
+    color-scheme: dark;
+}
+
+
