@@ -1,15 +1,25 @@
 import { AtSign, Plus, User, X } from "lucide-react";
 import { FormEvent } from "react";
 import { Button } from "../../components/button";
+import { format } from "date-fns";
+import { ptBR } from 'date-fns/locale';
 
 interface ConfirmTripsModalProps{
     closeConfirmTripModal: () => void,
     createTrip : (event: FormEvent<HTMLFormElement>) => void,
     setOwnerName : (ownerName:string) => void,
-    setOwnerEmail: (ownerEmail:string) => void
+    setOwnerEmail: (ownerEmail:string) => void,
+    destination : string ,
+    starts_at: Date,
+    ends_at: Date   
 }   
 
 export function ConfirmTripModal(props:ConfirmTripsModalProps){
+
+  const displayedDate = props.starts_at && props.ends_at 
+  ? format(props.starts_at, "d' de 'LLLL", { locale: ptBR }).concat(' até ').concat(format(props.ends_at, "d' de 'LLLL", { locale: ptBR }))
+  : null;
+  
     return(
         <div className="fixed inset-0 bg-black/60 flex items-center justify-center">
             <div className="w-[640px] rounded-xl py-5 px-6 shadow-shape bg-zinc-900 space-y-5">
@@ -22,7 +32,7 @@ export function ConfirmTripModal(props:ConfirmTripsModalProps){
                 </div>
 
                 <p className="text-sm text-zinc-400">
-                <span>Para concluir a criação da viagem para</span> <span className="text-zinc-100 font-semibold">**viagem**</span> , nas datas de <span className="text-zinc-100 font-semibold">**data**</span>  preencha os dados abaixo:
+                <span>Para concluir a criação da viagem para </span>{props.destination} <span className="text-zinc-100 font-semibold"></span> , nas datas de {displayedDate}  <span className="text-zinc-100 font-semibold"></span>  preencha os dados abaixo:
                 </p>
               </div>
               

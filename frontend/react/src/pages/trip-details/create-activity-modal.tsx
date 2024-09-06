@@ -4,6 +4,7 @@ import { FormEvent } from "react";
 import { api } from "../../lib/axios";
 import { useParams } from "react-router-dom";
 
+
 interface CreateActivityModalProps{
   closeCreateActivityModal: () =>void,
 } 
@@ -40,7 +41,7 @@ export function CreateActivityModal(props:CreateActivityModalProps){
             </div>
 
             <p className="text-sm text-zinc-400">
-              <span>Todos convidados podem visualizar as atividades.</span> <span className="text-zinc-100 font-semibold">**viagem**</span> , nas datas de <span className="text-zinc-100 font-semibold">**data**</span>  preencha os dados abaixo:
+              <span>Todos convidados podem visualizar as atividades. Preencha os dados abaixo:</span>
             </p>
           </div>
 

@@ -151,14 +151,18 @@ export function CreateTripPage() {
         />
       )}
 
-      {isConfirmTripModalOpen && (
-        <ConfirmTripModal 
+      {isConfirmTripModalOpen && eventStartAndEndDates?.from && eventStartAndEndDates?.to && (
+        <ConfirmTripModal
           closeConfirmTripModal={closeConfirmTripModal}
           createTrip={createTrip}
           setOwnerName={setOwnerName}
           setOwnerEmail={setOwnerEmail}
+          destination={destination}
+          starts_at={eventStartAndEndDates.from}
+          ends_at={eventStartAndEndDates.to}
         />
       )}
+
     </div>
   );
 }
